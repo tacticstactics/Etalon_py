@@ -3,6 +3,7 @@
 
 import numpy as np
 import math
+import cmath
 
 def proc1(param=0.01,m=512):
 
@@ -19,6 +20,8 @@ def proc1(param=0.01,m=512):
     PTetacol = np.zeros((m,1)); # PowerTrans
     
     PRetacol = np.zeros((m,1)); # PowerReflection
+
+    Etphasecol = np.zeros((m,1)); # Phase of Trans E
 
     #Etcol = np.ones(m, dtype=complex);#*2
        
@@ -48,8 +51,10 @@ def proc1(param=0.01,m=512):
 
         Et = (te1*te2)*np.exp(-1j * 4 * math.pi * etalen /wl) / (1+re1*re2 * np.exp(-1j * 4 * math.pi * etalen /wl));
         conjE = Et.conjugate()
-
         PT = Et * conjE
+
+        Etphase = cmath.phase(Et)
+        Etphasecol[(ii)] = Etphase
 
         PTetacol[(ii)] =PT
 
@@ -58,6 +63,6 @@ def proc1(param=0.01,m=512):
         
 
 
-    return wlcol, PTetacol,PRetacol
+    return wlcol, PTetacol, PRetacol, Etphasecol
 
 

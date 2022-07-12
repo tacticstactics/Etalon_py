@@ -12,7 +12,7 @@ import Etalon_Phase_def
 param = 0.01
 m = 128
 
-wlcol, PTetacol,PRetacol = Etalon_Phase_def.proc1(param,m)
+wlcol, PTetacol,PRetacol, Etphasecol = Etalon_Phase_def.proc1(param,m)
 
 
 print('')
@@ -29,6 +29,8 @@ ax4 = fig.add_subplot(2, 2, 4)
 
 ax1.plot(wlcol,PTetacol)
 ax2.plot(wlcol,PRetacol)
+ax3.plot(wlcol,Etphasecol)
+
 #ax3.plot(wlcol,np.real(Signalcol))
 
 plt.show()
