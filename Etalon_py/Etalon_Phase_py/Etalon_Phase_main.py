@@ -1,5 +1,5 @@
 
-#Etalon_main.py
+#Etalon_Phase_main.py
 
 
 
@@ -7,16 +7,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-import Etalon_def
+import Etalon_Phase_def
 
 param = 0.01
 m = 128
 
-wlcol, PTetacol,PRetacol = Etalon_def.proc1(param,m)
+wlcol, PTetacol,PRetacol = Etalon_Phase_def.proc1(param,m)
 
 
 print('')
-print('Etalon_main.py')
+print('Etalon_Phase_main.py')
 print('')
 
 
