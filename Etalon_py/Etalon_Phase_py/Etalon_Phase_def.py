@@ -27,8 +27,8 @@ def proc1(param=0.01,m=512):
        
     #Signalcol = np.ones(m, dtype=complex);#*2
 
-    Re1 = 0.5;
-    Re2 = 0.5;
+    Re1 = 0.9001;
+    Re2 = 0.9001;
 
     re1 = math.sqrt(Re1);
     re2 = math.sqrt(Re2);
