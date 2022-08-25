@@ -29,8 +29,8 @@ def proc1(param=0.01,m=512):
 
     # PRe1 must be higher than PRe2 because this is assuming air to glass incidence.
 
-    PRe1 = 0.701;
-    PRe2 = 0.701;
+    PRe1 = 0.801;
+    PRe2 = 0.801;
 
     # Consider Glass Etalon, e.g.Air to glass.
     # sign of re1 is negative. due to Phase jump
