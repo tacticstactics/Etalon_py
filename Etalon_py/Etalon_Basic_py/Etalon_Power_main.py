@@ -21,7 +21,7 @@ print('')
 fig = plt.figure(figsize = (10,6), facecolor='lightblue')
 
 ax1 = fig.add_subplot(1, 2, 1)
-ax2 = fig.add_subplot(1, 2, 2)
+ax2 = fig.add_subplot(1, 2, 2, sharey=ax1)
 
 ax1.plot(wlcol,PTetacol)
 ax2.plot(wlcol,PRetacol)

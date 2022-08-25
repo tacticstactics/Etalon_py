@@ -1,5 +1,5 @@
 
-#Etalon_Phase_def
+#Etalon_Phase_def.py
 
 import numpy as np
 import math
@@ -10,9 +10,9 @@ def proc1(param=0.01,m=512):
     global c
     c = 2.99792458E+14 # um / s
 
+
     stepwl = 0.000003; # um
     wl0 = 0.65; #um
-
     wlcol = np.zeros((m,1)); # wavelength
 
     omegacol = np.zeros((m,1)); # wavelength
@@ -27,16 +27,35 @@ def proc1(param=0.01,m=512):
        
     #Signalcol = np.ones(m, dtype=complex);#*2
 
-    Re1 = 0.99001;
-    Re2 = 0.99001;
+    # PRe1 must be higher than PRe2 because this is assuming air to glass incidence.
 
-    re1 = math.sqrt(Re1);
-    re2 = math.sqrt(Re2);
-    te1 = math.sqrt(1-Re1);
-    te2 = math.sqrt(1-Re2);
+    PRe1 = 0.701;
+    PRe2 = 0.701;
+
+    # Consider Glass Etalon, e.g.Air to glass.
+    # sign of re1 is negative. due to Phase jump
+    # sign of re2 is positive
+    # sign of te1 is positive
+    # sign of te2 is positive
+
+    
+    re1 = -1 * math.sqrt(PRe1);
+    print('re1 = ',re1)
+
+    
+    re2 = math.sqrt(PRe2);
+    print('re2 = ',re2)
+
+
+    te1 = math.sqrt(1-PRe1);
+    print('te1 = ',te1)
+
+    te2 = math.sqrt(1-PRe2);
+    print('te2 = ',te2)
 
     etalen = 500;
     
+
 
     for ii in range(m):
 
@@ -46,27 +65,26 @@ def proc1(param=0.01,m=512):
         omega = 2 * math.pi * c / wl;
         omegacol[(ii)] = omega
 
-        # Unknown Resource
-        #Et = (te1*te2)*np.exp(-1j * 4 * math.pi * etalen /wl) / (1+re1*re2 * np.exp(-1j * 4 * math.pi * etalen /wl));
+        sigma = 4*math.pi*etalen/wl
+
+        # Yariv, page.135
         
-        # yariv, page.135
-        
-        Er = re1+(te1*te2*re2)*np.exp(1j*4*math.pi*etalen/wl)*(1+re2**2*np.exp(1j*1*4*math.pi*etalen/wl)+re2**4*np.exp(1j*2*4*math.pi*etalen/wl));
-        Et = (te1*te2)*(1+re2**2*np.exp(1j*1*4*math.pi*etalen/wl)+re2**4*np.exp(1j*2*4*math.pi*etalen/wl));
+        Er = re1+(te1*te2*re2)*np.exp(1j*sigma)*(1+re2**2*np.exp(1j*1*sigma)+re2**4*np.exp(1j*2*sigma)+re2**6*np.exp(1j*3*sigma)+re2**8*np.exp(1j*4*sigma)+re2**10*np.exp(1j*5*sigma));
+        Et = (te1*te2)*(1+re2**2*np.exp(1j*1*sigma)+re2**4*np.exp(1j*2*sigma)+re2**6*np.exp(1j*3*sigma)+re2**8*np.exp(1j*4*sigma)+re2**10*np.exp(1j*5*sigma));
         
 
         #Reflect
-        conjEr = Er.conjugate()
-        PR = Er * conjEr
-        PRetacol[(ii)] = PR
+        #conjEr = Er.conjugate()
+        PR = abs(Er)**2
+        PRetacol[(ii)]=PR
 
         Erphase = cmath.phase(Er)
         Erphasecol[(ii)] = Erphase
         
         #Trans
-        conjEt = Et.conjugate()
-        PT = Et * conjEt
-        PTetacol[(ii)] =PT
+        #conjEt = Et.conjugate()
+        PT = abs(Et)**2
+        PTetacol[(ii)]=PT
 
         Etphase = cmath.phase(Et)
         Etphasecol[(ii)] = Etphase     
