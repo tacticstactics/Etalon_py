@@ -1,5 +1,5 @@
 
-#Etalon_Basic_def
+#Etalon_Power_Basic_def
 
 import numpy as np
 import math
@@ -33,10 +33,7 @@ def proc1(param=0.01,m=512):
     te2 = math.sqrt(1-Re2);
 
     etalen = 1500;
-
-
-
-
+    
     for ii in range(m):
 
 

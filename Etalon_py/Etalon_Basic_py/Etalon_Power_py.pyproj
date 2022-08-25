@@ -5,12 +5,12 @@
     <ProjectGuid>9f23df17-b758-427b-ac72-9478cdd56a49</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>Etalon_Basic_main.py</StartupFile>
+    <StartupFile>Etalon_Power_main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>Etalon_Basic_py</Name>
+    <Name>Etalon_Power_py</Name>
     <RootNamespace>Polarimeter_py</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -22,8 +22,8 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Etalon_Basic_def.py" />
-    <Compile Include="Etalon_Basic_main.py" />
+    <Compile Include="Etalon_Power_def.py" />
+    <Compile Include="Etalon_Power_main.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

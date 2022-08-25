@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32611.2
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Etalon_Basic_py", "Etalon_Basic_py\Etalon_Basic_py.pyproj", "{9F23DF17-B758-427B-AC72-9478CDD56A49}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Etalon_Power_py", "Etalon_Basic_py\Etalon_Power_py.pyproj", "{9F23DF17-B758-427B-AC72-9478CDD56A49}"
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Etalon_Phase_py", "Etalon_Phase_py\Etalon_Phase_py.pyproj", "{B1F02E6A-370C-4E9F-80D1-DA249BAF047D}"
 EndProject

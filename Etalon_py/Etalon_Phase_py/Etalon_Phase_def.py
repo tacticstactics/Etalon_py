@@ -27,15 +27,15 @@ def proc1(param=0.01,m=512):
        
     #Signalcol = np.ones(m, dtype=complex);#*2
 
-    Re1 = 0.9001;
-    Re2 = 0.9001;
+    Re1 = 0.99001;
+    Re2 = 0.99001;
 
     re1 = math.sqrt(Re1);
     re2 = math.sqrt(Re2);
     te1 = math.sqrt(1-Re1);
     te2 = math.sqrt(1-Re2);
 
-    etalen = 1500;
+    etalen = 500;
     
 
     for ii in range(m):
@@ -51,28 +51,25 @@ def proc1(param=0.01,m=512):
         
         # yariv, page.135
         
-        Er = re1+(te1*te2*re2)*np.exp(1j*4*math.pi*etalen/wl)*(1+re2*re2*np.exp(1j*4*math.pi*etalen/wl)+re2*re2*re2*re2*np.exp(1j*2*4*math.pi*etalen/wl));
-        Et = (te1*te2)*(1+re2*re2*np.exp(1j*4*math.pi*etalen/wl)+re2*re2*re2*re2*np.exp(1j*2*4*math.pi*etalen/wl));
+        Er = re1+(te1*te2*re2)*np.exp(1j*4*math.pi*etalen/wl)*(1+re2**2*np.exp(1j*1*4*math.pi*etalen/wl)+re2**4*np.exp(1j*2*4*math.pi*etalen/wl));
+        Et = (te1*te2)*(1+re2**2*np.exp(1j*1*4*math.pi*etalen/wl)+re2**4*np.exp(1j*2*4*math.pi*etalen/wl));
         
 
-        conjEt = Et.conjugate()
-        PT = Et * conjEt
-
-        Etphase = cmath.phase(Et)
-        Etphasecol[(ii)] = Etphase
-
-        PTetacol[(ii)] =PT
-
+        #Reflect
         conjEr = Er.conjugate()
         PR = Er * conjEr
         PRetacol[(ii)] = PR
 
         Erphase = cmath.phase(Er)
         Erphasecol[(ii)] = Erphase
-
-
-
         
+        #Trans
+        conjEt = Et.conjugate()
+        PT = Et * conjEt
+        PTetacol[(ii)] =PT
+
+        Etphase = cmath.phase(Et)
+        Etphasecol[(ii)] = Etphase     
 
 
     return wlcol, PTetacol, PRetacol, Etphasecol, Erphasecol
