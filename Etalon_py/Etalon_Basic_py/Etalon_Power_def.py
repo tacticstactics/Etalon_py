@@ -44,11 +44,11 @@ def proc1(param=0.01,m=512):
         omegacol[(ii)] = omega
 
         Et = (te1*te2)*np.exp(-1j * 4 * math.pi * etalen /wl) / (1+re1*re2 * np.exp(-1j * 4 * math.pi * etalen /wl));
-        conjE = Et.conjugate()
+        conjEt = Et.conjugate()
 
-        PT = Et * conjE
+        PT = Et * conjEt
 
-        PTetacol[(ii)] =PT
+        PTetacol[(ii)] = PT
 
         PR = 1-PT
         PRetacol[(ii)] = PR
