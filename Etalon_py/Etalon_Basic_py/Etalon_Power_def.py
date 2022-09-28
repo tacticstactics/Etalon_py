@@ -24,8 +24,8 @@ def proc1(param=0.01,m=512):
        
     #Signalcol = np.ones(m, dtype=complex);#*2
 
-    Re1 = 0.7;
-    Re2 = 0.01;
+    Re1 = 0.9;
+    Re2 = 0.9;
 
     re1 = math.sqrt(Re1);
     re2 = math.sqrt(Re2);
@@ -45,12 +45,14 @@ def proc1(param=0.01,m=512):
 
         Et = (te1*te2)*np.exp(-1j * 4 * math.pi * etalen /wl) / (1+re1*re2 * np.exp(-1j * 4 * math.pi * etalen /wl));
         conjEt = Et.conjugate()
-
         PT = Et * conjEt
-
         PTetacol[(ii)] = PT
 
-        PR = 1-PT
+        Er = (re1-re2)**2 + 4 * re1*re2 * math.sin(4 * math.pi * etalen /wl)**2 / ((1-re1*re2)**2)
+        conjEr = Er.conjugate()
+
+
+        PR = Er *conjEr
         PRetacol[(ii)] = PR
         
 
