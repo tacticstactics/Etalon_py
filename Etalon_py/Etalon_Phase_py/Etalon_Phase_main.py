@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import Etalon_Phase_def
 
 param = 0.001
-m = 512
+m = 2048
 
 wlcol,PTetacol,PRetacol,Etphasecol,Erphasecol = Etalon_Phase_def.proc1(param,m)
 
