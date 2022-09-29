@@ -27,10 +27,10 @@ def proc1(param=0.01,m=512):
        
     #Signalcol = np.ones(m, dtype=complex);#*2
 
-    # PRe1 must be higher than PRe2 because this is assuming air to glass incidence.
+    # PRe1 must be higher than or equal to PRe2 because this air to glass incidence was assumed here.
 
-    PRe1 = 0.401;
-    PRe2 = 0.401;
+    PRe1 = 0.501;
+    PRe2 = 0.501;
 
     # Consider Glass Etalon, e.g.Air to glass.
     # sign of re1 is negative. due to Phase jump
@@ -66,7 +66,7 @@ def proc1(param=0.01,m=512):
 
         sigma = 4*math.pi*etalen/wl # Phase change ver each return
 
-        # Yariv, page.135
+        # Yariv, Optoelectronics, page.135
         
         Er = re1+(te1*te2*re2)*np.exp(1j*sigma)*(1+re2**2*np.exp(1j*1*sigma)+re2**4*np.exp(1j*2*sigma)+re2**6*np.exp(1j*3*sigma)+re2**8*np.exp(1j*4*sigma)+re2**10*np.exp(1j*5*sigma));
         Et = (te1*te2)*(1+re2**2*np.exp(1j*1*sigma)+re2**4*np.exp(1j*2*sigma)+re2**6*np.exp(1j*3*sigma)+re2**8*np.exp(1j*4*sigma)+re2**10*np.exp(1j*5*sigma));
@@ -75,7 +75,7 @@ def proc1(param=0.01,m=512):
         #Reflect
         #conjEr = Er.conjugate()
         PR = abs(Er)**2
-        PRetacol[(ii)]=PR
+        PRetacol[(ii)] = PR
 
         Erphase = cmath.phase(Er)
         Erphasecol[(ii)] = Erphase
