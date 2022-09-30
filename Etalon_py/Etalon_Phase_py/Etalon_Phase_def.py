@@ -13,7 +13,7 @@ def proc1(param, m):
 
 
     wl0 = 0.65; #um
-    etalen = 200; # Etalon Length in um
+    etalen = 1000; # Etalon Length in um
 
     stepwl = wl0**2/(etalen * m); # um
     
@@ -63,7 +63,7 @@ def proc1(param, m):
         omega = 2 * math.pi * c / wl;
         omegacol[ii] = omega
 
-        sigma = 4*math.pi*etalen/wl # Phase change ver each return
+        sigma = 4*math.pi*etalen/wl # Phase change per each round trip
 
         # Yariv, Optoelectronics, page.135
         
