@@ -10,7 +10,7 @@ def proc1(param, m):
     c = 2.99792458E+14 # um / s
 
     wl0 = 0.65; #um
-    etalen = 1000;
+    etalen = 1000; #um
 
     stepwl = 0.5*wl0**2/(etalen * m); # um
 
